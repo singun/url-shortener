@@ -5,6 +5,8 @@ URL shortener는 다음과 같은 기능을 가지고 있습니다.
 - 단축 URL의 길이는 8글자 이내로 생성됩니다.
 - 단축 URL을 입력폼에 입력하면 원래 URL로 리다이렉트합니다.
 
+[DEMO](http://ec2-54-92-196-132.compute-1.amazonaws.com:8080/)
+
 ## 문제해결 전략
 ### 기본 알고리즘
 Original URL을 숫자 형태의 임의의 값으로 치환한 후에, 이 값을 문자52개로 인코딩해서 shorten code를 만든다
