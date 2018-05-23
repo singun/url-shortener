@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head xmlns:th="http://www.w3.org/1999/xhtml">
+  <meta charset="UTF-8">
+  <title>URL SHORTENER</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+  <div>
+    <h1>URL SHORTENER</h1>
+  </div>
+  <div class="row">
+    <form method="post" id="submit" name="submit">
+      <input class="col-sm-6" type="text" id="originalUrl" name="originalUrl" placeholder="Past a link to shorten it" />
+      <button type="button" class="btn btn-success btn-sm" onclick="return shortenUrl()">Shorten</button>
+    </form>
+  </div>
+  <br/>
+  <div class="row" th:if="${shortened}">
+    Request :: <span th:text="${originalUrl}"></span>
+    <br/>
+    Response :: <b th:text="${shortened}"></b>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  function shortenUrl() {
+    var url = $('#originalUrl').val();
+
+    // 동일 host에 대한 url 단축 요청이 온 경우에는 해당 original URL로 리다이렉트
+    if (url.indexOf(window.location.host) > -1) {
+      window.location.replace(url);
+      return false;
+    }
+
+    if (!validate(url)) {
+      return false;
+    }
+
+    $('#submit').submit();
+  }
+
+  function validate(url) {
+    if (!url) {
+      alert('Requested URL is empty');
+      return false;
+    }
+
+    if (!containHttpProtocolPrefix(url)) {
+      alert('Invalid wrong URL format(ex, http:// or https://');
+      return false;
+    }
+
+    return true;
+  }
+
+  function containHttpProtocolPrefix(url) {
+    var reg = /^https{0,1}:\/\//;
+    return url.match(reg);
+  };
+
+</script>
+</body>
+</html>
