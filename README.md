@@ -54,13 +54,18 @@ Original URL을 숫자 형태의 임의의 값으로 치환한 후에, 이 값�
   
 
 ## 빌드 및 실행 방법
-### maven run
+1. git clone
+```
+$ git clone https://github.com/singun/url-shortener.git
+```
+
+2-1. maven run
 ```
 // 버전1
-mvn spring-boot:run -Durl.shortener.version=1
+$ mvn spring-boot:run -Durl.shortener.version=1
 
 // 버전2
-mvn spring-boot:run -Durl.shortener.version=2
+$ mvn spring-boot:run -Durl.shortener.version=2
 ```
 
 - 버전2 실행 시, `Redis` 필수
@@ -69,9 +74,12 @@ mvn spring-boot:run -Durl.shortener.version=2
   - port : 6379
   - Redis [[설치 가이드](https://redis.io/download#installation)]
 
-### excutable jar
+2-2. excutable jar
 ```
-java -jar {경로}/urlshortener-0.0.1-SNAPSHOT.jar --url.shortener.version={1 or 2}
+// jar 파일 생성
+$ mvn package
+
+$ java -jar {경로}/urlshortener-0.0.1-SNAPSHOT.jar --url.shortener.version={1 or 2}
 ```
 
 #### Request
