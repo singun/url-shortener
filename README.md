@@ -78,9 +78,6 @@ $ mvn spring-boot:run -Durl.shortener.version=2
 
 2. excute jar
 ```
-// jar 파일 생성
-$ mvn package
-
 $ java -jar {경로}/20181433K7-urlshortener-0.0.1-SNAPSHOT.jar --url.shortener.version={1 or 2}
 ```
 
