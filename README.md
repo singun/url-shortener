@@ -1,11 +1,9 @@
-# URL Shortener
+# URL Shortener ([DEMO](http://ec2-54-92-196-132.compute-1.amazonaws.com:8080/))
 URL shortener는 URL을 입력받아 단축 URL을 만들어주고, 단축 URL을 입력하면 원래 URL로 리다이렉트 합니다.
 URL shortener는 다음과 같은 기능을 가지고 있습니다.
 - webapp으로 개발되었고, URL 입력 폼을 제공해주며 변환된 결과를 출력합니다.
 - 단축 URL의 길이는 8글자 이내로 생성됩니다.
 - 단축 URL을 입력폼에 입력하면 원래 URL로 리다이렉트합니다.
-
-[DEMO](http://ec2-54-92-196-132.compute-1.amazonaws.com:8080/)
 
 ## 문제해결 전략
 ### 기본 알고리즘
