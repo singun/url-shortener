@@ -74,7 +74,7 @@ $ mvn spring-boot:run -Durl.shortener.version=2
   - Redis [[설치 가이드](https://redis.io/download#installation)]
 
 ### jar
-1. jar 파일 [다운로드](https://s3.amazonaws.com/elasticbeanstalk-us-east-1-410855085303/20181433K7-urlshortener-0.0.1-SNAPSHOT.jar)
+1. jar 파일 [다운로드](https://s3.amazonaws.com/elasticbeanstalk-us-east-1-410855085303/urlshortener-0.0.1-SNAPSHOT.jar)
 
 2. excute jar
 ```
