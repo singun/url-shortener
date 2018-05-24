@@ -12,7 +12,7 @@
   <div class="row">
     <form method="post" id="submit" name="submit">
       <input class="col-sm-6" type="text" id="originalUrl" name="originalUrl" placeholder="Past a link to shorten it" />
-      <button type="button" class="btn btn-success btn-sm" onclick="return shortenUrl()">Shorten</button>
+      <button type="button" id="submitButton" class="btn btn-success btn-sm">Shorten</button>
     </form>
   </div>
   <br/>
@@ -25,6 +25,21 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+
+$(document).ready(function() {
+  $('#originalUrl').keydown(function(key) {
+    if (key.keyCode == 13) {
+      var url = $('#originalUrl').val();
+      shortenUrl(url);
+      return false;
+    }
+  });
+
+  $('#submitButton').click(function() {
+    var url = $('#originalUrl').val();
+    shortenUrl(url);
+  });
+
   function shortenUrl() {
     var url = $('#originalUrl').val();
 
@@ -48,7 +63,7 @@
     }
 
     if (!containHttpProtocolPrefix(url)) {
-      alert('Invalid wrong URL format(ex, http:// or https://');
+      alert('Invalid wrong URL format(ex, http:// or https://)');
       return false;
     }
 
@@ -59,6 +74,7 @@
     var reg = /^https{0,1}:\/\//;
     return url.match(reg);
   };
+});
 
 </script>
 </body>
