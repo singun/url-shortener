@@ -22,8 +22,13 @@ public class RequestInterceptor implements HandlerInterceptor {
      */
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        requestHolder.setHost(request.getHeader("host"));
-        requestHolder.setProtocol(request.getScheme());
+        try {
+            requestHolder.setHost(request.getHeader("host"));
+            requestHolder.setProtocol(request.getScheme());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
         return true;
     }
 }

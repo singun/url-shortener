@@ -1,5 +1,6 @@
 package daewook.assignment.urlshortener.controller;
 
+import daewook.assignment.urlshortener.configuration.Properties;
 import daewook.assignment.urlshortener.interceptors.RequestHolder;
 import daewook.assignment.urlshortener.v1.utils.UrlShortener;
 import daewook.assignment.urlshortener.v2.service.UrlShortenerService;
@@ -17,10 +18,10 @@ public class UrlShortenerController {
     private RequestHolder requestHolder;
 
     @Autowired
-    private UrlShortenerService urlShortenerService;
+    private Properties properties;
 
-    @Value("${url.shortener.version}")
-    private Integer version;
+    @Autowired
+    private UrlShortenerService urlShortenerService;
 
     /**
      * Main Page
@@ -45,7 +46,7 @@ public class UrlShortenerController {
         mnv.addObject("originalUrl", originalUrl);
 
         String shortenCode;
-        if (version == 2) {
+        if (properties.getVersion() == 2) {
             shortenCode = urlShortenerService.toShortenUrl(originalUrl);
         } else {
             shortenCode = UrlShortener.shorten(originalUrl);
@@ -66,7 +67,7 @@ public class UrlShortenerController {
         System.out.println(String.format("[Request] original URL. shorten code = %s", shortenCode));
 
         String originalUrl;
-        if (version == 2) {
+        if (properties.getVersion() == 2) {
             originalUrl = urlShortenerService.toOriginalUrl(shortenCode);
         } else {
             originalUrl = UrlShortener.originate(shortenCode);

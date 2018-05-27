@@ -29,7 +29,7 @@ public class RequestHolder {
     }
 
     public String getFullHostname() {
-        return this.protocol + TOKEN + this.host;
+        return this.getProtocol() + TOKEN + this.getHost();
     }
 
 }
